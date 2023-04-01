@@ -21,14 +21,13 @@ fun! gpt#scratch(...) abort
 	if a:0 > 0
 		let tpl = a:1
 	endif
-	echo tpl
 	call s:new_buffer()
-	if l:tpl == ''
+	if tpl == ''
 		" bring into insert position
 		call feedkeys('i')
 	else
 		" insert the prompt template and bring to insert position
-		call feedkeys('"' . tpl . 'VpGi')
+		call feedkeys('V"' . tpl . 'pGi')
 	endif
 endfun
 
