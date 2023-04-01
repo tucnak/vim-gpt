@@ -1,23 +1,11 @@
 # vim-gpt
 > Note: this plugin depends on [gpt][1]— an ergonomic CLI tool being set up.
 
-This plugin brings OpenAI streaming chat completion API to Vim scratch buffers, & registers. In particular, when running `:Gpt [<reg>]` it opens a scratch buffer, if `g:gpt_default_register` is specified, the buffer will be populated using said register.
+This plugin brings OpenAI streaming chat completion API to Vim scratch buffers, & registers. In particular, when running `:Gpt [<reg>]` it opens a scratch buffer, if `g:gpt_default_register` is specified, the buffer will be populated using said register. The scratch buffers created using `:Gpt` are visible in the buffers list, simplifying navigation and allowing to search through them and employ tools like [fzf][3]. There's also [vim-markdown][4] support for code highligts in all `gpt` buffers, including folding.
 
-The scratch buffers created using `:Gpt` are visible in the buffers list, simplifying navigation and allowing to search through them and employ tools like [fzf][3].
+But most important of all, gpt and gpt-vim introduce a simple format for intarctive conversation:
 
-Most important of all, there's a particular format for chat conversations that both [gpt][1] and vim-gpt follows:
-
-```
-You're a helpful assistant.
-
-	>>>>>>
-Tell a joke.
-
-	<<<<<<
-Sure, here's one: Why did the tomato turn red? Because it saw the salad dressing!
-
-	>>>>>>
-```
+<img src="https://i.imgur.com/jigt7XF.png" width="50%" height="50%"/>
 
 The system component may be skipped. Consider that if the guide marks are not provided, the whole buffer will be used as prompt, which may not be exactly what you're looking for. Using a dedicated register for the scratch template and the fact that [gpt][1] appends the prompting `>>>>>>` guide mark automatically, you are likely never going to write them by hand, although various binds/abbreviations may be employed to simplify.
 
@@ -54,3 +42,4 @@ MIT
 [1]: https://github.com/tucnak/gpt
 [2]: https://i.redd.it/cuusrp3qgooa1.png
 [3]: https://github.com/junegunn/fzf.vim
+[4]: https://github.com/tpope/vim-markdown
