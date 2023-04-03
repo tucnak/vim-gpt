@@ -45,7 +45,12 @@ fun! gpt#dialog() abort
 endfun
 
 fun! gpt#job(model, opts) abort
-  	let command = &shell . ' -c "gpt -vim -' . a:model . ' ' . a:opts . '"'
+	let command = &shell
+	if has('win32') || has('win64')
+		let command .= ' /C gpt -vim -' . a:model . ' ' . a:opts
+	else
+		let command .= ' -c "gpt -vim -' . a:model . ' ' . a:opts . '"'
+	endif
   	let job_options = {
         		\ 'noblock': 1,
         		\ 'in_io': 'buffer',
