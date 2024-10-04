@@ -58,15 +58,15 @@ fun! gpt#scratch(...) abort
 endfun
 
 fun! gpt#instant() abort
-	let model = get(g:, 'gpt_default_model', '3')
+	let model = get(g:, 'gpt_default_model', 'model=gpt-4o')
 	let opts = get(g:, 'gpt_default_opts', '')
 	call gpt#job(model, opts)
 endfun
 
 fun! gpt#dialog() abort
-	let def_model = get(g:, 'gpt_default_dialog_model', '4')
-	let def_opts = get(g:, 'gpt_default_dialog_opts', '0.7 256')
-	let model = input('model [3,4]: ', def_model)
+	let def_model = get(g:, 'gpt_default_dialog_model', 'model=gpt-4o')
+	let def_opts = get(g:, 'gpt_default_dialog_opts', '0.5 1024')
+	let model = input('model [3,4,model=]: ', def_model)
 	let opts = input('[temperature max_length top_p fpen ppen]: ', def_opts)
 	redraw
 	call gpt#job(model, opts)
